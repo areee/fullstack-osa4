@@ -2,8 +2,8 @@ POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-    "title": "Chromium Blog",
-  "author": "Google",
-  "url": "https://blog.chromium.org/",
-  "likes": 16
+    "title": "Testiotsikko",
+  "author": "Arttu",
+  "url": "https://google.com/",
+  "likes": 3
 }
