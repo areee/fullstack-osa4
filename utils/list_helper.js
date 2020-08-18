@@ -9,7 +9,12 @@ const totalLikes = (blogs) => {
   return blogs.reduce(reducer, 0)
 }
 
+const favoriteBlog = (blogs) => {
+  return 123 // TODO: the final return statement
+}
+
 module.exports = {
   dummy,
   totalLikes,
+  favoriteBlog,
 }
