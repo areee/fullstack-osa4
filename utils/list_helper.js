@@ -19,7 +19,11 @@ const favoriteBlog = (blogs) => {
       blogIndex = index
     }
   }
-  return blogs[blogIndex]
+  let returnObject = blogs[blogIndex]
+  delete returnObject._id
+  delete returnObject.url
+  delete returnObject.__v
+  return returnObject
 }
 
 module.exports = {
