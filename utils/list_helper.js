@@ -10,7 +10,16 @@ const totalLikes = (blogs) => {
 }
 
 const favoriteBlog = (blogs) => {
-  return 123 // TODO: the final return statement
+  let biggestLikeValue = 0
+  let blogIndex = 0
+  for (let index = 0; index < blogs.length; index++) {
+    const element = blogs[index]
+    if (element.likes > biggestLikeValue) {
+      biggestLikeValue = element.likes
+      blogIndex = index
+    }
+  }
+  return blogs[blogIndex]
 }
 
 module.exports = {
