@@ -16,6 +16,10 @@ describe('when there is initially some blogs saved', () => {
     const response = await api.get('/api/blogs')
     expect(response.body).toHaveLength(helper.initialBlogs.length)
   })
+
+  test('identified fields exist', async () => {
+    const response = await api.get('/api/blogs')
+  })
 })
 
 afterAll(() => {
