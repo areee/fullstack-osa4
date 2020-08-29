@@ -6,8 +6,8 @@ blogsRouter.get('/', async (request, response) => {
   response.json(blogs.map((blog) => blog.toJSON()))
 })
 
-blogsRouter.post('/', (request, response) => {
-  console.log(request.body)
+blogsRouter.post('/', async (request, response, next) => {
+  // console.log(request.body)
   const blog = new Blog(request.body)
 
   blog.save().then((result) => {
