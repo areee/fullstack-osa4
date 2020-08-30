@@ -33,7 +33,7 @@ describe('when there is initially some blogs saved', () => {
     await api
       .post('/api/blogs')
       .send(newBlog)
-      .expect(201)
+      .expect(200)
       .expect('Content-Type', /application\/json/)
 
     const blogsAtEnd = await helper.blogsInDb()
