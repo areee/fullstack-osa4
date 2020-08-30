@@ -42,6 +42,22 @@ describe('when there is initially some blogs saved', () => {
     const titles = blogsAtEnd.map((n) => n.title)
     expect(titles).toContain('Hyvä blogiotsikko tähän')
   })
+
+  test('a blog without like attribute has value 0', async () => {
+    const newBlog = {
+      title: 'Blogi ilman tykkäyksiä',
+      author: 'areee',
+      url: 'https://twitter.com/arttuylh',
+    }
+    await api
+      .post('/api/blogs')
+      .send(newBlog)
+      .expect(200)
+      .expect('Content-Type', /application\/json/)
+    const blogsAtEnd = await helper.blogsInDb()
+    expect(blogsAtEnd.length).toBe(helper.initialBlogs.length + 1)
+    expect(blogsAtEnd[helper.initialBlogs.length].likes).toBe(0)
+  })
 })
 
 afterAll(() => {
