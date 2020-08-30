@@ -58,6 +58,16 @@ describe('when there is initially some blogs saved', () => {
     expect(blogsAtEnd.length).toBe(helper.initialBlogs.length + 1)
     expect(blogsAtEnd[helper.initialBlogs.length].likes).toBe(0)
   })
+
+  test('a blog without title and url is not added', async () => {
+    const newBlog = {
+      author: 'Arttu',
+      likes: 55,
+    }
+    await api.post('/api/blogs').send(newBlog).expect(400)
+    const response = await api.get('/api/blogs')
+    expect(response.body).toHaveLength(helper.initialBlogs.length)
+  })
 })
 
 afterAll(() => {
