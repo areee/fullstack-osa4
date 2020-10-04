@@ -84,6 +84,28 @@ describe('when there is initially some blogs saved', () => {
 
     expect(title).not.toContain(blogToDelete.title)
   })
+
+  test('a valid blog can be updated', async () => {
+    const updatedBlog = {
+      title: 'Päivitetty otsikko',
+      url: 'https://paivitettysivu.com/',
+      likes: 999,
+    }
+
+    const blogsAtStart = await helper.blogsInDb()
+    const blogToUpdate = blogsAtStart[0]
+
+    await api
+      .put(`/api/blogs/${blogToUpdate.id}`)
+      .send(updatedBlog)
+      .expect(200)
+      .expect('Content-Type', /application\/json/)
+
+    const blogsAtEnd = await helper.blogsInDb()
+    const newUpdatedBlog = blogsAtEnd[0]
+
+    expect(newUpdatedBlog.likes).toBe(999)
+  })
 })
 
 afterAll(() => {
