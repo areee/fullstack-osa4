@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
 const supertest = require('supertest')
+const mongoose = require('mongoose')
 const helper = require('./test_helper')
 const app = require('../app')
 const api = supertest(app)
@@ -65,8 +65,9 @@ describe('when there is initially some blogs saved', () => {
       likes: 55,
     }
     await api.post('/api/blogs').send(newBlog).expect(400)
-    const response = await api.get('/api/blogs')
-    expect(response.body).toHaveLength(helper.initialBlogs.length)
+
+    const blogsAtEnd = await helper.blogsInDb()
+    expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length)
   })
 })
 
