@@ -80,9 +80,9 @@ describe('when there is initially some blogs saved', () => {
 
     expect(blogsAtEnd.length).toBe(helper.initialBlogs.length - 1)
 
-    const contents = blogsAtEnd.map((r) => r.content)
+    const title = blogsAtEnd.map((r) => r.title)
 
-    expect(contents).not.toContain(blogToDelete.content)
+    expect(title).not.toContain(blogToDelete.title)
   })
 })
 
