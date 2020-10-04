@@ -69,6 +69,21 @@ describe('when there is initially some blogs saved', () => {
     const blogsAtEnd = await helper.blogsInDb()
     expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length)
   })
+
+  test('deletion of a blog succeeds if id is valid', async () => {
+    const blogsAtStart = await helper.blogsInDb()
+    const blogToDelete = blogsAtStart[0]
+
+    await api.delete(`/api/blogs/${blogToDelete.id}`).expect(204)
+
+    const blogsAtEnd = await helper.blogsInDb()
+
+    expect(blogsAtEnd.length).toBe(helper.initialBlogs.length - 1)
+
+    const contents = blogsAtEnd.map((r) => r.content)
+
+    expect(contents).not.toContain(blogToDelete.content)
+  })
 })
 
 afterAll(() => {
