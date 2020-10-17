@@ -1,10 +1,9 @@
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFyZWVlIiwiaWQiOiI1ZjgzM2NjMGU2NjgzOTE0Y2E5ZjZlZmYiLCJpYXQiOjE2MDI5NTY0OTl9.l9CEsqPFyzCvzcqdTDwkGLjutluP3thhsinMkfsSRnQ
 
 {
-  "title": "Otsikko 2",
-  "author": "Kirjoittaja 2",
-  "url": "https://www.esimerkki2.fi",
-  "likes": 0,
-  "userId": "5f833cc0e6683914ca9f6eff"
+  "title": "Otsikko 3",
+  "author": "Kirjoittaja 3",
+  "url": "https://www.esimerkki3.fi"
 }
